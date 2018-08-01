@@ -8,7 +8,7 @@ Installation
 
 .. code-block:: sh
 
-    pip install git...
+    pip install git+https://github.com/gaussalgo/gauss-hash.git
 
 
 Python usage
