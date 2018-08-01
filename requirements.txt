@@ -1,0 +1,14 @@
+atomicwrites==1.1.5
+attrs==18.1.0
+coverage==4.5.1
+funcsigs==1.0.2
+gauss-hash==0.0.1
+more-itertools==4.3.0
+pathlib2==2.3.2
+pluggy==0.7.1
+py==1.5.4
+pytest==3.7.0
+pytest-cov==2.5.1
+scandir==1.7
+six==1.11.0
+Unidecode==1.0.22

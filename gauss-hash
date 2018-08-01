@@ -1,0 +1,44 @@
+#!/usr/bin/env python
+# -*- coding:utf-8 -*-
+
+import sys
+import os
+import pkg_resources
+import fileinput
+from optparse import OptionParser
+from gauss_hash import GuassHashSha256, GaussTextProcessor
+
+
+version = pkg_resources.require('gauss-hash')[0].version
+
+
+def main():
+
+    usage = '{}: see source code'.format(sys.argv[0])
+    parser = OptionParser(usage, version='{} version {}'.format(os.path.basename(sys.argv[0]), version))
+    parser.add_option('-V', '--verbose', action='store_true', dest='version', default=None, help='be verbose')
+    parser.add_option('-s', '--salt', action='store', dest='salt', default='', help='salt')
+    parser.add_option('-m', '--mode', action='store', dest='mode', default=None, help='mode of preprocessing')
+
+    opts, args = parser.parse_args()
+
+    processor = dict(dummy=GaussTextProcessor.dummy).get(opts.mode)
+    h = GuassHashSha256(salt=opts.salt, processor=processor)
+
+    fi = fileinput.FileInput(files=args, openhook=fileinput.hook_encoded("utf8"))
+    while True:
+        line = fi.readline()
+        if not line:
+            break
+        print(h.get_hash(line[:-1]))
+
+
+if __name__ == '__main__':
+    try:
+        main()
+    except KeyboardInterrupt:
+        pass
+
+
+# vim: set cin et ts=4 sw=4 ft=python :11
+

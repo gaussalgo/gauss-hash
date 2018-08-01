@@ -1,0 +1,15 @@
+.*.sw*
+*.pyc
+/build/
+/dist/
+/*.egg-info/
+*egg*
+Session.vim
+.idea/
+.ropeproject/
+.cache/
+.pytest_cache/
+.coverage
+htmlcov/
+*/__pycache__/
+
